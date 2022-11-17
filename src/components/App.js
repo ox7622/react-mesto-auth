@@ -63,17 +63,15 @@ const App = () => {
     const handleLogin = useCallback(async ({ password, email }) => {
         try {
             setIsLoading(true);
-            const userEmail = email;
-            let data = await authUser.login({ password, email });
-            if ((localStorage.getItem('email') === userEmail) && data) {
+            const data = await authUser.login({ password, email });
+
+            if (data) {
+
                 localStorage.setItem('token', data.token);
                 setUserEmail(localStorage.getItem('email'));
                 setLoggedIn(true);
                 setMessage("Добро пожаловать!");
                 setLoginOk(true);
-            } else {
-                setMessage("Неправильный email");
-                setLoginFail(true)
             }
 
         } catch (err) {
