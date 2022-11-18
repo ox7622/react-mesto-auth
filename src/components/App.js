@@ -281,15 +281,15 @@ const App = () => {
                         handleLogout={handleLogout}
                     />
 
-                    <Route path="/sign-in">
+                    <Route path="/react-mesto-auth/sign-in">
                         <Login isLoggedIn={loggedIn} onLogin={handleLogin} buttonText={isLoading ? "Вхожу..." : "Вход"} />
                     </Route>
-                    <Route path="/sign-up">
+                    <Route path="/react-mesto-auth/sign-up">
                         <Register isLoggedIn={regSuccess} onRegister={handleReg} buttonText={isLoading ? "Регистрирую..." : "Зарегистрироваться"} />
                     </Route>
 
                     <Route>
-                        {loggedIn ? <Redirect to='/main' /> : <Redirect to="/sign-in" />}
+                        {loggedIn ? <Redirect to='/react-mesto-auth/main' /> : <Redirect to="/react-mesto-auth/sign-in" />}
                     </Route>
                 </Switch>
                 <Footer />

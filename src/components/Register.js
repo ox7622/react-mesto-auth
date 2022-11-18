@@ -20,7 +20,7 @@ const Register = ({ buttonText, onRegister, isLoggedIn }) => {
     };
 
     if (isLoggedIn) {
-        return <Redirect to="/sign-in" />
+        return <Redirect to="/react-mesto-auth/sign-in" />
     }
 
 

@@ -14,7 +14,7 @@ const Login = ({ onLogin, buttonText, isLoggedIn }) => {
         onLogin(values);
     }
     if (isLoggedIn) {
-        return <Redirect to="/main" />
+        return <Redirect to="/react-mesto-auth/main" />
     }
 
     return (
