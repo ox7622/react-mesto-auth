@@ -44,7 +44,7 @@ const App = () => {
     const tokenCheck = useCallback(async () => {
         try {
             setIsLoading(true);
-            let jwt = localStorage.getItem("token");
+            const jwt = localStorage.getItem("token");
             if (!jwt) {
                 throw new Error('no token');
             }
