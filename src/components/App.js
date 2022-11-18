@@ -65,7 +65,7 @@ const App = () => {
             setIsLoading(true);
             const data = await authUser.login({ password, email });
 
-            if (data) {
+            if (data.token) {
 
                 localStorage.setItem('token', data.token);
                 setUserEmail(localStorage.getItem('email'));
