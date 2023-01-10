@@ -24,7 +24,8 @@ const {values, handleChange, setValues} = useForm({name: '', link: ''})
             buttonTitle={buttonText}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            setButtonState = {values.name_buttonState || values.link_buttonState } >
             <input
                 className="popup__input popup__input_field_place-name"
                 type="text"
@@ -36,7 +37,7 @@ const {values, handleChange, setValues} = useForm({name: '', link: ''})
                 placeholder="Название"
                 minLength="2"
                 maxLength="30" />
-            <span className="popup__error-message place-name-input-error"></span>
+            <span className="input-error">{values.name==='' ? null : values.name_error}</span>
             <input
                 className="popup__input popup__input_field_place-link"
                 type="url"
@@ -46,7 +47,7 @@ const {values, handleChange, setValues} = useForm({name: '', link: ''})
                 id="place-link-input"
                 required
                 placeholder="Ссылка на картинку" />
-            <span className="popup__error-message place-link-input-error"></span>
+            <span className="input-error">{values.link==='' ? null : values.link_error}</span>
         </PopupWithForm>
     )
 }

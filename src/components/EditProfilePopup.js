@@ -6,15 +6,7 @@ import { useForm } from "../hooks/useForm";
 export function EditProfilePopup({ isOpen, onClose, onUpdateUser, buttonText }) {
 
     const {values, handleChange, setValues} = useForm({name: '', role: ''})
-    // const [name, setName] = useState('');
-    // function handleNameChange(e) {
-    //     setName(e.target.value);
-    // }
-    // const [role, setRole] = useState('');
-    // function handleRoleChange(e) {
-    //     setRole(e.target.value);
-    // }
-
+  
     const currentUser = useContext(CurrentUserContext);
 
     useEffect(() => {
@@ -40,7 +32,8 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, buttonText }) 
             buttonTitle={buttonText}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            setButtonState={values.name_buttonState || values.role_buttonState} >
             <input className="popup__input popup__input_field_name"
                 onChange={handleChange}
                 value={values.name || ""}
@@ -50,8 +43,9 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, buttonText }) 
                 required
                 placeholder="Ваше имя"
                 minLength="2"
-                maxLength="40" />
-            <span className="popup__error-message name-input-error"></span>
+                maxLength="40"
+                 />
+            <span className="input-error">{values.name=='' ? null : values.name_error}</span>
             <input className="popup__input popup__input_field_role"
                 onChange={handleChange}
                 value={values.role || ""}
@@ -62,6 +56,6 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser, buttonText }) 
                 placeholder="Напишите о себе"
                 minLength="2"
                 maxLength="200" />
-            <span className="popup__error-message role-input-error"></span></PopupWithForm>
+            <span className="input-error">{values.role ? null : values.role_error}</span></PopupWithForm>
     )
 }

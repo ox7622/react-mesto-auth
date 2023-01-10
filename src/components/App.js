@@ -151,7 +151,7 @@ const App = () => {
                 closeAllPopups();
             }
         } catch (err) {
-            console.log("запрос на получение данных профиля не выполнен: " + err)
+            console.log("запрос на смену аватара не выполнен: " + err)
         } finally {
             setIsLoading(false)
         }
@@ -281,15 +281,15 @@ const App = () => {
                         handleLogout={handleLogout}
                     />
 
-                    <Route path="/react-mesto-auth/sign-in">
+                    <Route path="/signin">
                         <Login isLoggedIn={loggedIn} onLogin={handleLogin} buttonText={isLoading ? "Вхожу..." : "Вход"} />
                     </Route>
-                    <Route path="/react-mesto-auth/sign-up">
+                    <Route path="/signup">
                         <Register isLoggedIn={regSuccess} onRegister={handleReg} buttonText={isLoading ? "Регистрирую..." : "Зарегистрироваться"} />
                     </Route>
 
                     <Route>
-                        {loggedIn ? <Redirect to='/react-mesto-auth/main' /> : <Redirect to="/react-mesto-auth/sign-in" />}
+                        {loggedIn ? <Redirect to='/main' /> : <Redirect to="/signin" />}
                     </Route>
                 </Switch>
                 <Footer />

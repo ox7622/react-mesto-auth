@@ -1,10 +1,12 @@
-export const baseUrl = "https://auth.nomoreparties.co";
+export const baseUrl = "http://api.ox7622.nomoredomains.club";
+
 
 export const register = async ({ password, email }) => {
   const res = await fetch(`${baseUrl}/signup`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Origin": "http://ox7622.nomoredomains.club"
     },
     body: JSON.stringify({ password, email })
   });
@@ -15,7 +17,8 @@ export const login = async ({ password, email }) => {
   const res = await fetch(`${baseUrl}/signin`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Origin": "http://ox7622.nomoredomains.club"
     },
     body: JSON.stringify({ password, email })
   });
@@ -27,7 +30,8 @@ export const checkToken = async (token) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`,
+      "Origin": "http://ox7622.nomoredomains.club"
     }
   });
 

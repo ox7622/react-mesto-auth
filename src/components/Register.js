@@ -9,7 +9,7 @@ const Register = ({ buttonText, onRegister, isLoggedIn }) => {
         password: '',
         email: ''
     });
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onRegister(values).catch(err => {
@@ -18,15 +18,16 @@ const Register = ({ buttonText, onRegister, isLoggedIn }) => {
         );
 
     };
+    let buttonState = (values.password_buttonState || values.email_buttonState);
 
     if (isLoggedIn) {
-        return <Redirect to="/react-mesto-auth/sign-in" />
+        return <Redirect to="/signin" />
     }
 
 
     return (
         <>
-            <Header><li><Link to="sign-in" className="header__link">Войти</Link></li></Header>
+            <Header><li><Link to="signin" className="header__link">Войти</Link></li></Header>
             <div className="form__container">
                 <form className='form' name='sign-up' onSubmit={handleSubmit} >
                     <h2 className='form__title'>Регистрация</h2>
@@ -42,7 +43,7 @@ const Register = ({ buttonText, onRegister, isLoggedIn }) => {
                         placeholder="Email"
                         minLength="5"
                         maxLength="70" />
-                    <span className="form__error"></span>
+                    <span className="input-error">{values.email_error}</span>
                     <input
                         className="form__input"
                         required
@@ -55,8 +56,9 @@ const Register = ({ buttonText, onRegister, isLoggedIn }) => {
                         placeholder="Пароль"
                         minLength="5"
                         maxLength="70" />
-                    <span className="form__error"></span>
-                    <button className="form__submit" type="submit">{buttonText}</button>
+                    <span className="input-error">{values.password_error}</span>
+                    <button className={`form__submit ${buttonState && 'form__submit_disabled'}`}
+                        disabled={buttonState} type="submit">{buttonText}</button>
                 </form>
                 <p className="form__comment">Уже зарегистрированы? <Link to="/sign-in" className="form__link">Войти</Link></p>
             </div>
